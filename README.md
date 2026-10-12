@@ -54,7 +54,7 @@ Install the dependencies:
 
 ```bash
 python -m pip install --upgrade pip
-python -m pip install numpy Pillow pyproj PyYAML requests rasterio scipy shapely tqdm
+python -m pip install -r requirements.txt
 ```
 
 ### Windows PowerShell
@@ -63,7 +63,7 @@ python -m pip install numpy Pillow pyproj PyYAML requests rasterio scipy shapely
 py -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install numpy Pillow pyproj PyYAML requests rasterio scipy shapely tqdm
+python -m pip install -r requirements.txt
 ```
 
 `rasterio` may require platform-specific binary dependencies on some systems. Installing it inside a current virtual environment using the official Python wheels is recommended.
