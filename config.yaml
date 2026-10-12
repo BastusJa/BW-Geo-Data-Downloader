@@ -1,0 +1,82 @@
+# User configuration
+# Technical defaults are in advanced_config.yaml and are merged automatically.
+
+# Area center in WGS84
+center:
+  latitude: 48.93278
+  longitude: 8.95639
+
+# Requested area and final raster resolution
+area:
+  width_m: 28000
+  height_m: 28000
+resolution_m: 4.0
+
+output:
+  directory: "./output"
+  filename: "Vaihingen_DGM_4m_2.tif"
+  png:
+    enabled: true
+    filename: "dgm_4m_heightmap.png"
+
+# Optional DEM smoothing
+processing:
+  smoothing:
+    enabled: true
+    median_size: 3
+    gaussian_sigma: 0.8
+    gaussian_passes: 1
+
+# TF3 mask generation and classification settings
+tf3:
+  enabled: true
+  output_directory: "./output/tf3"
+  masks:
+    rivers:
+      enabled: true
+      filename: "river_mask.png"
+      background: 0
+      foreground: 255
+      use_osm_width: true
+      minimum_width_m: 2.0
+      waterways:
+        river: {width_m: 20.0}
+        stream: {width_m: 4.0}
+        canal: {width_m: 12.0}
+        ditch: {width_m: 2.0}
+        drain: {width_m: 2.0}
+    mountains:
+      enabled: true
+      filename: "mountain_mask.png"
+      elevation: {enabled: true, start_m: 300.0, full_m: 600.0}
+      slope: {enabled: true, start_deg: 12.0, full_deg: 35.0}
+      elevation_weight: 0.55
+      slope_weight: 0.45
+      smoothing: {enabled: true, gaussian_sigma: 1.0}
+    biomes:
+      enabled: true
+      filename: "biome_mask.png"
+      values:
+        water: 0
+        forest: 32
+        meadow: 64
+        farmland: 96
+        settlement: 128
+        heath: 160
+        wetland: 192
+        rock: 224
+        barren: 255
+    individual_masks:
+      enabled: true
+      forest: {enabled: true, filename: "forest_mask.png", value: 255}
+      meadow: {enabled: true, filename: "meadow_mask.png", value: 255}
+      farmland: {enabled: true, filename: "farmland_mask.png", value: 255}
+      settlement: {enabled: true, filename: "settlement_mask.png", value: 255}
+      heath: {enabled: true, filename: "heath_mask.png", value: 255}
+      wetland: {enabled: true, filename: "wetland_mask.png", value: 255}
+      rock: {enabled: true, filename: "rock_mask.png", value: 255}
+    water:
+      enabled: true
+      filename: "water_mask.png"
+      value: 255
+      osm_types: [river, stream, canal, lake, reservoir, pond]

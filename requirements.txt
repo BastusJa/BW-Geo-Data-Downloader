@@ -1,0 +1,9 @@
+numpy==2.5.3
+Pillow==12.3.0
+pyproj==3.8.0
+PyYAML==6.0.3
+requests==2.34.2
+rasterio==1.5.2
+scipy==1.18.1
+shapely==2.1.2
+tqdm==4.67.1

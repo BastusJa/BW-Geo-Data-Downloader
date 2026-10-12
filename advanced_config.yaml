@@ -1,0 +1,49 @@
+# Advanced configuration
+# Change these values only when the downloader implementation or data provider changes.
+
+crs:
+  input: "EPSG:4326"
+  processing: "EPSG:25832"
+
+output:
+  compression: "deflate"
+  predictor: 3
+  tiled: true
+  bigtiff: "IF_SAFER"
+  nodata: -9999.0
+
+processing:
+  aggregation: "mean"
+  chunk_lines: 50000
+
+download:
+  directory: "./dgm1_tiles"
+  max_retries: 5
+  timeout_seconds: 120
+  chunk_size_bytes: 1048576
+  user_agent: "LGL-DGM1-Downloader/1.0"
+  delete_after_processing: false
+
+lgl:
+  url_template: >-
+    https://opengeodata.lgl-bw.de/data/dgm/dgm1_32_{x}_{y}_2_bw.zip
+  tile_size_m: 2000
+
+runtime:
+  verbose: true
+  fail_on_missing_tile: true
+
+tf3:
+  osm:
+    overpass_url: "https://overpass-api.de/api/interpreter"
+    timeout_seconds: 180
+    retries: 5
+    include:
+      forests: true
+      meadows: true
+      farmland: true
+      settlements: true
+      heath: true
+      wetlands: true
+      rocks: true
+      water: true
